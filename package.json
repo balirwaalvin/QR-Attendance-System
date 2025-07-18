@@ -1,0 +1,32 @@
+{
+  "name": "qr-attendance-system",
+  "version": "1.0.0",
+  "description": "QR Code Attendance Management System",
+  "main": "backend/server.js",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "install-server": "cd backend && npm install",
+    "heroku-postbuild": "npm run install-server && npm run build",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "qr-code",
+    "attendance",
+    "event-management",
+    "nodejs",
+    "react",
+    "mysql"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
