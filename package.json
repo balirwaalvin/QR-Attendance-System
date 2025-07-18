@@ -4,8 +4,8 @@
   "description": "QR Code Attendance Management System",
   "main": "backend/server.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
-    "install-server": "cd backend && npm install",
+    "build": "cd frontend && npm ci && npm run build",
+    "install-server": "cd backend && npm ci",
     "heroku-postbuild": "npm run install-server && npm run build",
     "start": "cd backend && npm start",
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
@@ -13,8 +13,8 @@
     "client": "cd frontend && npm start"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": "18.x",
+    "npm": "9.x"
   },
   "keywords": [
     "qr-code",
