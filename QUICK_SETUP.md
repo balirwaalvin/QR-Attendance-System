@@ -16,9 +16,8 @@ Your code is now on GitHub at: https://github.com/balirwaalvin/QR-Attendance-Sys
 2. Search "JawsDB MySQL"
 3. Add "JawsDB MySQL" with Kitefin (Free) plan
 
-## Step 4: Connect GitHub to Heroku (Recommended Method)
+## Step 4: Connect GitHub to Heroku
 
-### Option A: Heroku Dashboard (Recommended)
 1. In Heroku app, go to "Deploy" tab
 2. Choose "GitHub" as deployment method
 3. Connect your GitHub account if not already connected
@@ -26,15 +25,7 @@ Your code is now on GitHub at: https://github.com/balirwaalvin/QR-Attendance-Sys
 5. Enable "Automatic deploys" from main branch
 6. Click "Deploy Branch" for initial deployment
 
-### Option B: GitHub Actions (Advanced - Currently Disabled)
-The GitHub Actions workflow is included but disabled. To use it:
-1. Enable the workflow by editing `.github/workflows/deploy.yml`
-2. Add these secrets in your GitHub repository:
-   - `HEROKU_API_KEY`: Your Heroku API key
-   - `HEROKU_APP_NAME`: Your Heroku app name
-   - `HEROKU_EMAIL`: Your Heroku email
-
-**We recommend Option A (Heroku Dashboard) as it's more reliable and easier to set up.**
+**This is the recommended and most reliable deployment method.**
 
 ## Step 5: Configure Environment Variables
 In Heroku app "Settings" → "Config Vars", add:
