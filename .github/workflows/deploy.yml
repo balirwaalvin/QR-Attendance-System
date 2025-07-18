@@ -1,37 +1,42 @@
-name: Deploy to Heroku
+# GitHub Actions Workflow for Heroku Deployment
+# Currently disabled - use Heroku Dashboard GitHub integration instead
+# This workflow can be enabled if you prefer CI/CD through GitHub Actions
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: Deploy to Heroku (Disabled)
+
+# Uncomment the 'on' section below if you want to use GitHub Actions
+# on:
+#   push:
+#     branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: false  # This disables the workflow
     
     steps:
-    - uses: actions/checkout@v3
-    
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
         
-    - name: Install dependencies
+    - name: Install Heroku CLI
       run: |
-        npm install
-        cd backend && npm install
-        cd ../frontend && npm install
+        curl https://cli-assets.heroku.com/install.sh | sh
         
-    - name: Build frontend
+    - name: Login to Heroku
       run: |
-        cd frontend && npm run build
+        echo ${{ secrets.HEROKU_API_KEY }} | heroku auth:token
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         
     - name: Deploy to Heroku
-      uses: akhileshns/heroku-deploy@v3.12.14
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-        heroku_email: ${{secrets.HEROKU_EMAIL}}
-        usedocker: false
+      run: |
+        heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+        git push heroku main
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
